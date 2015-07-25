@@ -19,3 +19,4 @@ exports.connection.connect(function(err){
   }
 });
 
+// exports.connection.query('use ' + chat);

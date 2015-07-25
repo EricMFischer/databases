@@ -4,25 +4,23 @@ var mysql = require('mysql');
 
 module.exports = {
   messages: {
-    get: function (req, res) {}, // a function which handles a get request for all messages
+    get: function (req, res) {// a function which handles a get request for all messages
+      models.messages.get(req, res);
+    }, 
 
     post: function (req, res) { // a function which handles posting a message to the database
-    console.log('POST /');
-    console.log(req.body);
-    models.messages.post(req, res);
-    res.writeHead(200, {'Content-Type': 'text/html'});
-    res.end('thanks');
+      models.messages.post(req, res);
     }
   },
 
   users: {
     // Ditto as above
-    get: function (req, res) {console.log('test2')},
+    get: function (req, res) {
+      models.users.get(req, res);
+    },
+
     post: function (req, res) {
-      console.log('userPostRequest');
-      models.messages.post(req, res);
-      res.writeHead(200, {'Content-Type': 'text/html'});
-      res.end('thanks');
+      models.users.post(req, res);
     }
   }
 };

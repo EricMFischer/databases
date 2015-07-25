@@ -38,7 +38,7 @@ describe("Persistent Node Chat Server", function() {
               uri: "http://127.0.0.1:4000/classes/messages",
               json: {
                 username: "Valjean",
-                message: "In mercy's name, three days is all I need.",
+                message: "In mercys name, three days is all I need.",
                 roomname: "Hello"
               }
       }, function () {
@@ -55,7 +55,7 @@ describe("Persistent Node Chat Server", function() {
           expect(results.length).to.equal(1);
 
           // TODO: If you don't have a column named text, change this test.
-          expect(results[0].message).to.equal("In mercy's name, three days is all I need."); // changed here
+          expect(results[0].message).to.equal("In mercys name, three days is all I need."); // changed here
 
           done();
         });
@@ -65,6 +65,14 @@ describe("Persistent Node Chat Server", function() {
 
   it("Should output all messages from the DB", function(done) {
     // Let's insert a message into the db
+    request({method: "POST",
+      uri: "http://127.0.0.1:4000/classes/messages",
+      json: {
+        username: "Valjean",
+        message: "Men like you can never change!",
+        roomname: "main"
+      }
+    });
        var queryString = "SELECT * FROM messages";
        var queryArgs = [];
     // TODO - The exact query string and query args to use

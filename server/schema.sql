@@ -6,7 +6,7 @@ CREATE TABLE messages (
   /* Describe your table here.*/
   objectId int NOT NULL AUTO_INCREMENT,
   username varchar(20),
-  message varchar(200),
+  text varchar(200),
   roomname varchar(20),
   PRIMARY KEY (objectId)
 );

@@ -17,10 +17,10 @@ module.exports = {
     },
 
     post: function (req, res) { // a function which can be used to insert a message into the database
-      var message = req.body.message;
+      var text = req.body.text;
       var username = req.body.username;
       var roomname = req.body.roomname;
-      var queryString = "insert into messages (username, message, roomname) values(" + "'" + username + "'," + "'" + message + "'," + "'" + roomname + "'" + ")"
+      var queryString = "insert into messages (username, text, roomname) values(" + "'" + username + "'," + "'" + text + "'," + "'" + roomname + "'" + ")"
       console.log(queryString);
   
       db.connection.query(queryString, function(err, rows, fields){
@@ -28,7 +28,10 @@ module.exports = {
           res.end("Hey there's an error" + err);
         } else {
           res.writeHead(200, {'Content-Type': 'text/html'});
-          res.end(rows);
+          var data = {results: []}
+          data.results = rows;
+          console.log(data);
+          res.end(JSON.stringify(data));
         }
       });
     }
